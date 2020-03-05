@@ -1,0 +1,16 @@
+<!-- base template with navigation bar-->
+
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - GraphFHIR</title>
+        {% else %}
+        <title>Welcome to GraphFHIR</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>GraphFHIR: <a href="/index">Home</a></div>
+        <hr>
+        {% block content %} {% endblock %}
+    </body>
+</html>
