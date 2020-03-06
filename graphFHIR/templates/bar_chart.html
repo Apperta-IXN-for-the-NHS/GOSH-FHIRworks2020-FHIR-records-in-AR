@@ -1,71 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
 <head>
-    <meta charset="utf-8" />
-    <title>{{ title }}</title>
     <!-- import the Chart.js plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 
 <body>
-    <center><h1>{{ title }}</h1></center>
-    <center>
-        <div style="width: 90%;">
-            <canvas id="barChart" width="600" height="400"></canvas>
-        </div>
-        <script>
-            var chartData = {
-                labels : [{% for item in labels %}
-                        "{{item}}",
-                        {% endfor %}],
-                datasets : [{
-                    label: 'label for bar chart',
-                    borderWidth: 1,
-                    data : [{% for item in values %}
-                            {{item}},
-                            {% endfor %}],
-                }]
-            };
+<center>
+<div style="width: 90%;">
+    <canvas id="barChart" width="600" height="400"></canvas>
+</div>
+<script>
+    var chartData = {
+        labels: [{% for item in labels %}
+                 "{{item}}",
+                 {% endfor %}],
+        datasets: [{
+            backgroundColor: [{% for item in colors %}
+                              "{{item}}",
+                              {% endfor %}],
+            data: [{% for item in values %}
+                   {{item}},
+                   {% endfor %}],
+            }]
+    };
 
-            var ctx = document.getElementById('barChart');
+    var ctx = document.getElementById('barChart');
 
-            steps = 10;
-            max = {{max}};
-
-            var barChart = new Chart(ctx, {
-                type: 'bar',
-                data: chartData,
-                options: {
-                    scales: {
-                        xAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'x-axis label'
-                            }
-                        }],
-                        yAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'y-axis label'
-                            },
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    title: {
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
                         display: true,
-                        text: 'title for bar chart'
+                        labelString: 'observation type',
+                        fontStyle: "bold"
                     }
-                },
-                scaleOverride: true,
-                scaleSteps: steps,
-                scaleStepWidth: Math.ceil(max / steps),
-                scaleStartValue: 0,
-                scaleShowVerticalLines: true,
-                scaleShowGridLines : true,
-                scaleShowLabels: true,
-            });
-        </script>
-    </center>
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'blood pressure level (mm[Hg])',
+                        fontStyle: "bold"
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                text: 'Average Blood Pressure Level for {{name}}',
+                fontSize: 20
+            }
+        },
+    });
+</script>
+</center>
+<br>
+<p style="color:grey;font-size:12px;"><i>Note: The Blood Pressure observation values are None in this GOSH FHIR records.</i></p>
 </body>
+
+{% endblock %}

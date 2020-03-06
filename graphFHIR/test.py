@@ -21,7 +21,7 @@ patient_1_dbp_date = []
 patient_1_sbp = []  # Systolic Blood Pressure
 patient_1_sbp_date = []
 
-patient_1 = patients[0]
+patient_1 = patients[100]
 print(patient_1.uuid)
 patient_1_obs = fhir.get_patient_observations(patient_1.uuid)   # list of observations
 for observation in patient_1_obs:
@@ -29,21 +29,56 @@ for observation in patient_1_obs:
     for component in components:
         if component.display == 'Blood Pressure': 
             patient_1_bp.append(component.value)
-            patient_1_bp_date.append(datetimeToString(observation.issued_datetime))
+            patient_1_bp_date.append(observation.issued_datetime)
         elif component.display == 'Diastolic Blood Pressure':
             patient_1_dbp.append(component.value)
-            patient_1_dbp_date.append(datetimeToString(observation.issued_datetime))
+            patient_1_dbp_date.append(observation.issued_datetime)
         elif component.display == 'Systolic Blood Pressure':
             patient_1_sbp.append(component.value)
-            patient_1_sbp_date.append(datetimeToString(observation.issued_datetime))
+            patient_1_sbp_date.append(observation.issued_datetime)
 
-print(patient_1_bp)
-print(patient_1_bp_date)
-print(patient_1_dbp)
-print(patient_1_dbp_date)
-print(patient_1_sbp)
-print(patient_1_sbp_date)
+# print(patient_1_bp)
+# print(patient_1_bp_date)
+# print(patient_1_dbp)
+# print(patient_1_dbp_date)
+# print(patient_1_sbp)
+# print(patient_1_sbp_date)
 
+def sortByTime(data, date):
+    sorted_zip = sorted(zip(date, data))
+    sorted_data = [x for y, x in sorted_zip]
+    sorted_date = [y for y, x in sorted_zip]
+    return sorted_data, sorted_date
+
+
+def getAverage(data):
+    # map 'None' and 'N/A' to 0
+    arr = [0 if (value is None or value == 'N/A') else value for value in data]
+    print("arr: ")
+    print(arr)
+    return sum(arr)/len(arr)
+
+def check_all_none(data):
+    return all(value is None for value in data)
+
+def patient_blood_presure(patient_id):
+    patient_bp = [] 
+    patient_observations = fhir.get_patient_observations(patient_id)   # list of observations
+
+    for observation in patient_observations:
+        components = observation.components 
+        for component in components:
+            if component.display == 'Blood Pressure': 
+                patient_bp.append(component.value)
+
+    return patient_bp
+
+def test():
+    for i in range (0, 3):
+        patient = patients[i]
+        print(patient.uuid)
+
+test()
 
 
 

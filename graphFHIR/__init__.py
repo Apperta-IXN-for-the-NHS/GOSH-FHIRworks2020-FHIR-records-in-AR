@@ -1,4 +1,7 @@
-# __init__.py: Flask application instance
+'''
+__init__.py: contians Flask application instance 
+             and applys application configuation defined in config.py
+'''
 
 from flask import Flask
 from config import Config

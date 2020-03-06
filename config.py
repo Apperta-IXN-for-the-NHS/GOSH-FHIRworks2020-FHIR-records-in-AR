@@ -1,6 +1,5 @@
 '''
-The config.py file defines a list of configuration variables 
-and configuration sets for the application.
+config.py: defines configuration variables and configuration sets for the application.
 '''
 
 import os
