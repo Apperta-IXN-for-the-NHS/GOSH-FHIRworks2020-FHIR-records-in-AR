@@ -21,7 +21,7 @@ patient_1_dbp_date = []
 patient_1_sbp = []  # Systolic Blood Pressure
 patient_1_sbp_date = []
 
-patient_1 = patients[100]
+patient_1 = patients[0]
 print(patient_1.uuid)
 patient_1_obs = fhir.get_patient_observations(patient_1.uuid)   # list of observations
 for observation in patient_1_obs:
@@ -74,9 +74,8 @@ def patient_blood_presure(patient_id):
     return patient_bp
 
 def test():
-    for i in range (0, 3):
-        patient = patients[i]
-        print(patient.uuid)
+    patient = fhir.get_patient_page(int("10"))
+    print(len(patient))
 
 test()
 

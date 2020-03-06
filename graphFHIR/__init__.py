@@ -14,3 +14,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 
 from graphFHIR import routes
+
+# register API blueprint with the application
+from graphFHIR.api import bp as api_bp
+app.register_blueprint(api_bp, url_prefix='/api')

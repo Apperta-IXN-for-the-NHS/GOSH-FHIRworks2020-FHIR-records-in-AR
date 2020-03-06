@@ -1,6 +1,6 @@
 '''
 data.py: includes methods used to fetch relevant data from GOSH FHIR records
-         and methods used to pre-processing data for visualisation.
+         and to pre-processing data for API and visualisation.
 '''
 
 from fhir_parser import FHIR
@@ -15,6 +15,14 @@ def datetime_to_string(datetime):
 # (the dataset is GOSH FHIR DRIVE in this case)
 def get_all_patients():
     return fhir.get_all_patients()
+
+# Get a collection of patients up to the specific page number
+def get_pages_of_patients(page):
+    return fhir.get_patient_page(page)
+
+# Get a single patient according to patient ID
+def get_patient(patient_id):
+    return fhir.get_patient(patient_id)
 
 # A boolean function defined to check if the patient ID exists in the FHIR records
 def check_patient_id(patient_id):
@@ -117,7 +125,9 @@ def patient_systolic_blood_pressure(patient_observations):
 def get_average(data):
     # map 'None' and 'N/A' to 0
     arr = [0 if (value is None or value == 'N/A') else value for value in data]
-    return sum(arr)/len(arr)
+    if (len(arr) > 0):
+        return sum(arr)/len(arr)
+    return 0
 
 # A boolean function defined to check if all elements in an arry are None
 def check_all_none(data):
