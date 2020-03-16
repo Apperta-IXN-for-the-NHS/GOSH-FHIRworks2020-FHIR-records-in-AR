@@ -122,11 +122,12 @@ def patient_systolic_blood_pressure(patient_observations):
     return sbp_unit, sorted_sbp, sorted_sbp_date
 
 # Get the mean of a given data array
+# round the result to 3 decimal places
 def get_average(data):
     # map 'None' and 'N/A' to 0
     arr = [0 if (value is None or value == 'N/A') else value for value in data]
     if (len(arr) > 0):
-        return sum(arr)/len(arr)
+        return round(sum(arr)/len(arr), 3)
     return 0
 
 # A boolean function defined to check if all elements in an arry are None

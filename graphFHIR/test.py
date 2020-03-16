@@ -21,7 +21,7 @@ patient_1_dbp_date = []
 patient_1_sbp = []  # Systolic Blood Pressure
 patient_1_sbp_date = []
 
-patient_1 = patients[0]
+patient_1 = patients[1]
 print(patient_1.uuid)
 patient_1_obs = fhir.get_patient_observations(patient_1.uuid)   # list of observations
 for observation in patient_1_obs:
@@ -77,7 +77,7 @@ def test():
     patient = fhir.get_patient_page(int("10"))
     print(len(patient))
 
-test()
+print(round(getAverage(patient_1_dbp), 3))
 
 
 

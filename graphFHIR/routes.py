@@ -9,8 +9,7 @@ from graphFHIR import app, data
 from graphFHIR.forms import PatientIDForm
 
 
-# Define and initialise global data fields
-
+'''Define and initialise global data fields'''
 patient_name = None
 patient_observations = []
 # the observation dates for Blood Pressure, Diastolic Blood Pressure
@@ -65,7 +64,6 @@ def index():
         # if the patient exists, proceed to graphing
         return redirect('/bar')
         
-    # otherwise, the patiend doesn't exist
     return render_template('index.html', title='Home page', form=form)
 
 
@@ -123,3 +121,10 @@ def line():
 
     return render_template('line_chart.html', title='Line Graph', name=patient_name, labels=line_labels,
                             values=line_values, colors=line_colors, ds_labels=line_dataset_labels)
+
+
+# The documentation page
+# -- display user guide and other relevant infomation about GrahpFHIR
+@app.route('/document')
+def document():
+    return render_template('document.html', title='Documentation')

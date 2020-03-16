@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .section-title {
+        background-color: rgba(230, 255, 255);;
+        padding: 10px;
+    }
+    .section-block {
+        font-size: medium;
+    }
+</style>
+
+<div class="container">
+    <div id="doc-header" class="doc-header text-center">
+        <h1 class="doc-title" style="color:purple;">
+            About GraphFHIR</h1>
+            <div class="meta" style="color: grey;">
+                Last updated: March 16th, 2020
+            </div>
+    </div>
+    <div class="doc-body">
+        <h2 class="section-title">Project Goals</h2>
+        <div class="section-block">
+            <p>The GraphFHIR open source package aims to help hospitals optimising the the use of clinical data for research by <b>data visualisation</b>. 
+                This package uses the FHIR (Fast Healthcare Interoperability Resources) standard data, and focuses on data related to <b>Pressure, Diastolic Blood Pressure, and Systolic Blood Pressure</b>. </p>
+            <p>The GraphFHIR package also provides <b>API endpoints</b> to access data used for visualisation for future research and development purposes.</p>
+        </div>
+    </div>
+    <div class="doc-body">
+        <h2 class="section-title">Data source</h2>
+        <div class="section-block">
+            <p>The clinical data used in GraphFHIR is a collection of synthetic records retrieved on <b>GOSH</b> DRIVE’s FHIR server.</p>
+            <p>The Github link for GOSH gateway: <a href="https://github.com/goshdrive/FHIRworks_2020">https://github.com/goshdrive/FHIRworks_2020</a></p>
+        </div>
+    </div>
+    <div class="doc-body">
+        <h2 class="section-title">Technology</h2>
+        <div class="section-block">
+            <p>GraphFHIR is an open source web application. It adopts two main technologies:</p>
+            <ul>
+                <li><a href="https://palletsprojects.com/p/flask/"><b>Flask</b></a> — a lightweight WSGI web application framework</li>
+                <li><a href="https://www.chartjs.org/"><b>Chart.js</b></a> — an open source HTML5 based JavaScript charts tool</li>
+            </ul>
+            <p>In addition, it utilises <a href="https://github.com/greenfrogs/FHIR-Parser"><b>FHIR Parser</b></a>, an elegant Python open source package to pre-process the GOSH’s FHIR data.</p>
+        </div>
+    </div>
+    <div class="doc-body">
+        <h2 class="section-title">List of API endpoints</h2>
+        <div class="section-block">
+            <ul>
+                <li>GET all patients’ blood pressure-related observation data: <b>/api/patients</b></li>
+                <li>GET a patient’s blood pressure-related observation data: <b>/api/patients/<i>&ltpatient id&gt</i></b></li>
+                <li>GET blood pressure-related observation data for a selected number of pages of patient: <b>/api/patients/pages/<i>&ltnumber of pages&gt</i></b></li>
+            </ul>
+        </div>
+    </div>
+    <div class="doc-body">
+        <h2 class="section-title">Contact Information</h2>
+        <div class="section-block">
+            <p>Developer: <b>Jingting Yan</b> ( <i>jingting.yan.17@ucl.ac.uk</i> )</p>
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+
+{% endblock %}
