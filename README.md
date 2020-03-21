@@ -22,6 +22,7 @@ Open a new terminal and run the following commands.
 ### Running the app
 1. Clone the project and open it in Visual Studio Code.
 2. For Windows user, open a new Git Bash terminal (you can type in "Git Bash" in Windows searching window). 
+
    For Mac user, open a new terminal.
 3. In the terminal, run the following commands:
    ```
@@ -35,13 +36,20 @@ Open a new terminal and run the following commands.
    $ flask run --port=2000
    ```
 4. If successfully run the package, your terminal will display the following messages:
+
   *Serving Flask app "graphFHIR.py"*
+  
   *Environment: production*
+  
   *WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.*
+  
   *Debug mode: off*
+  
   *Running on http://127.0.0.1:2000/ (Press CTRL+C to quit)*
 5. Open a web browser and navigate to your localhost port. 
+   
    In this case, navigate to [http://127.0.0.1:2000/](http://127.0.0.1:2000/) to start.
+
 
 To exit the package, press CTRL+C. 
 
