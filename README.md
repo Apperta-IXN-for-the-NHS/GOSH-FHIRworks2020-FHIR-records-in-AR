@@ -5,8 +5,10 @@ The GraphFHIR package also provides **API endpoints** to access data used for vi
 
 ## Deployment Guide
 - Running the GOSH Drive (the data source for GraphFHIR) following the instructions on this [link](https://github.com/goshdrive/FHIRworks_2020).
+  
   Note: To successfully run the GOSH Drive, you are required to have its Azure FHIR API credentials.
 - Installing necessary dependencies using terminal
+  
   Open a new terminal and run the following commands.
   1. Install [FHIR-Parser](https://pypi.org/project/FHIR-Parser/)
      ```
