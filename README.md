@@ -36,16 +36,13 @@ Open a new terminal and run the following commands.
    $ flask run --port=2000
    ```
 4. If successfully run the package, your terminal will display the following messages:
-
-  *Serving Flask app "graphFHIR.py"*
-  
-  *Environment: production*
-  
-  *WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.*
-  
-  *Debug mode: off*
-  
-  *Running on http://127.0.0.1:2000/ (Press CTRL+C to quit)*
+   ```
+   Serving Flask app "graphFHIR.py"
+   Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+   Debug mode: off
+   Running on http://127.0.0.1:2000/ (Press CTRL+C to quit)
+   ```
 5. Open a web browser and navigate to your localhost port. 
    
    In this case, navigate to [http://127.0.0.1:2000/](http://127.0.0.1:2000/) to start.
