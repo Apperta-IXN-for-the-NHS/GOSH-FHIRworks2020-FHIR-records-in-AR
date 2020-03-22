@@ -24,7 +24,7 @@ Open a new terminal and run the following commands.
 2. For Windows user, open a new Git Bash terminal (you can type in "Git Bash" in Windows searching window). 
 
    For Mac user, open a new terminal.
-3. In the terminal, run the following commands:
+3. In the terminal, navigate to the directory **GOSH-FHIRworks2020-GraphFHIR** then run the following commands:
    ```
    $ source virtual_env/bin/activate 
    $ export FLASK_APP=graphFHIR.py
